@@ -1,18 +1,19 @@
 import { ITheme } from 'types/types';
 
 const theme = {
+  red: '#c82814',
   lightFont: 300,
   boldFont: 600,
   fontSize: {
-    xxxs: '0.9rem',
-    xxs: '1.1rem',
+    xxxs: '1rem',
+    xxs: '1.2rem',
     xs: '1.3rem',
-    s: '1.5rem',
-    m: '1.6rem',
-    l: '2rem',
-    xl: '2.5rem',
-    xxl: '3rem',
-    xxxl: '4.5rem',
+    s: '1.4rem',
+    m: '1.5rem',
+    l: '1.8rem',
+    xl: '2.1rem',
+    xxl: '2.8rem',
+    xxxl: '3.2rem',
   },
 };
 
@@ -21,8 +22,9 @@ const lightMode: ITheme = {
   primary: '#ffffff',
   secondary: '#eee',
   additional: '#c8c9c9',
-  blue: '#1b3fba',
   fontColor: '#24292f',
+  fontColorAdditional100: '#4d9fdd',
+  fontColorAdditional200: '#2478bd',
   ...theme,
 };
 
@@ -31,8 +33,9 @@ const darkMode: ITheme = {
   primary: '#22272e',
   secondary: '#2d333b',
   additional: '#c8c9c9',
-  blue: '#4b6cdc',
   fontColor: '#cdd9e5',
+  fontColorAdditional100: '#664b86',
+  fontColorAdditional200: '#bb86fc',
   ...theme,
 };
 
