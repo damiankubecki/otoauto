@@ -45,8 +45,6 @@ const Input = styled.input`
   }
 `;
 
-const Option = styled.option``;
-
 const ElementContainer = styled.div`
   margin: 30px 0 0;
 `;
@@ -57,22 +55,15 @@ interface IFormFieldProps {
   children: JSX.Element;
 }
 
+const FormFieldWrapper = styled.div`
+  margin: 15px 0 0;
+`;
+
 const FormField = ({ id, title, children }: IFormFieldProps) => (
-  <div>
+  <FormFieldWrapper>
     <Label htmlFor={id}>{title}</Label>
     {children}
-  </div>
+  </FormFieldWrapper>
 );
 
-export {
-  Form,
-  FormField,
-  ElementContainer,
-  LoadingSpinner,
-  Title,
-  Label,
-  Input,
-  Select,
-  Option,
-  Button,
-};
+export { Form, FormField, ElementContainer, LoadingSpinner, Title, Label, Input, Select, Button };
