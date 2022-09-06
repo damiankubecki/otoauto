@@ -22,13 +22,6 @@ export interface ITheme {
   };
 }
 
-export interface ICarData {
-  id: number;
-  mark: Mark;
-  country: string;
-  models: Model[];
-}
-
 export interface IThemeContext {
   activeTheme: ITheme;
   toggleTheme: () => void;
@@ -43,6 +36,10 @@ export interface ICarsContext {
   cars: ICarData[];
 }
 
+export interface IOffersContext {
+  offers: ICarOffer[];
+}
+
 export interface IView {
   name: string;
   path: string;
@@ -55,7 +52,7 @@ export interface IMessage {
   buttonFn: () => void;
 }
 
-export type Bodytype =
+export type Bodystyle =
   | 'auta małe'
   | 'auta miejskie'
   | 'coupe'
@@ -66,7 +63,7 @@ export type Bodytype =
   | 'sedan'
   | 'SUV';
 
-export type Mark = string;
+export type Make = string;
 
 export type Model = string;
 
@@ -78,12 +75,48 @@ export type Transmission = 'manulana' | 'automatyczna';
 
 export type FuelType = 'benzyna' | 'benzyna + LPG' | 'diesel' | 'hybryda' | 'elekrtyczny';
 
-export type Cost = number;
+export type Cost = string;
 
-export type Color = string;
+export type Color =
+  | 'czarny'
+  | 'biały'
+  | 'srebrny'
+  | 'różowy'
+  | 'grafitowy'
+  | 'niebieski'
+  | 'zielony'
+  | 'złoty'
+  | 'czerwony'
+  | 'bordowy'
+  | 'metaliczny'
+  | 'brązowy'
+  | 'żółty';
 
 export type HP = number;
 
 export type Engine = number;
 
 export type Description = string;
+
+export interface ICarOffer {
+  username: string;
+  make: Make;
+  model: Model;
+  yearOfProduction: YearOfProduction;
+  mileage: Mileage;
+  transmission: Transmission;
+  fuelType: FuelType;
+  cost: Cost;
+  bodystyle: Bodystyle;
+  color: Color;
+  hp: HP;
+  engine: Engine;
+  description: Description;
+}
+
+export interface ICarData {
+  id: number;
+  make: Make;
+  country: string;
+  models: Model[];
+}
