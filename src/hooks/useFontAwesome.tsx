@@ -1,7 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp, library, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faUser, faHeart, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus,
+  faUser,
+  faHeart,
+  faMoon,
+  faSun,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface IIconProps {
   color: string;
@@ -10,7 +17,7 @@ interface IIconProps {
 }
 
 const useFontAwesome = () => {
-  library.add(faPlus, faUser, faHeart, faMoon, faSun);
+  library.add(faPlus, faUser, faHeart, faMoon, faSun, faLocationDot);
 
   const Icon = ({ color, size, icon }: IIconProps): JSX.Element => (
     <FontAwesomeIcon color={color} size={size} icon={icon} />
