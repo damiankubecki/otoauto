@@ -11,6 +11,7 @@ const Button = styled.button`
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: ${({ theme }) => theme.boldFont};
   text-decoration: none;
+  text-align: center;
   transition: 0.15s;
 
   &:hover {
@@ -23,6 +24,18 @@ const Button = styled.button`
     padding: 8px 30px;
     font-size: ${({ theme }) => theme.fontSize.m};
   }
+
+  &.red {
+    background-color: ${({ theme }) => theme.red};
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `;
 
-export { Button, NavLink };
+const StyledNavLink = styled(NavLink)`
+  display: block;
+`;
+
+export { Button, StyledNavLink as NavLink };
