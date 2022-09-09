@@ -1,3 +1,5 @@
+export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+
 export interface ITheme {
   name: string;
   primary: string;
@@ -29,6 +31,7 @@ export interface IThemeContext {
 
 export interface IUserContext {
   isLogged: boolean;
+  id: null | string;
   username: null | string;
 }
 
@@ -71,11 +74,13 @@ export type YearOfProduction = number;
 
 export type Mileage = number;
 
-export type Transmission = 'manulana' | 'automatyczna';
+export type Location = string;
+
+export type Transmission = 'manualna' | 'automatyczna';
 
 export type FuelType = 'benzyna' | 'benzyna + LPG' | 'diesel' | 'hybryda' | 'elekrtyczny';
 
-export type Cost = string;
+export type Cost = number;
 
 export type Color =
   | 'czarny'
@@ -99,6 +104,7 @@ export type Engine = number;
 export type Description = string;
 
 export interface ICarOffer {
+  _id: string;
   username: string;
   make: Make;
   model: Model;
@@ -112,6 +118,9 @@ export interface ICarOffer {
   hp: HP;
   engine: Engine;
   description: Description;
+  location: Location;
+  date: string;
+  img: string;
 }
 
 export interface ICarData {
@@ -119,4 +128,19 @@ export interface ICarData {
   make: Make;
   country: string;
   models: Model[];
+}
+
+export interface ISearchConditions {
+  bodystyle: Bodystyle | null;
+  make: Make | null;
+  model: Model | null;
+  price_from: string | null;
+  price_to: string | null;
+  yearOfProduction_from: string | null;
+  yearOfProduction_to: string | null;
+  mileage_from: string | null;
+  mileage_to: string | null;
+  fuelType: FuelType | null;
+  transmission: Transmission | null;
+  color: Color | null;
 }
