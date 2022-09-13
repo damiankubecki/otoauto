@@ -20,6 +20,11 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
   }
+
+  *::selection {
+    color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.fontColorAdditional200};
+  }
   
   ::-webkit-scrollbar {
     width: 19px;
@@ -29,7 +34,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     border: 0;
   }
   ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.fontColorAdditional200};
+    background-color: ${({ theme }) => theme.primary};
     border: 7px solid ${({ theme }) => theme.primary};
     border-radius: 25px;
   }
