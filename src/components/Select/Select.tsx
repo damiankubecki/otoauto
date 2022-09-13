@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef, Fragment, useContext, useRef, useImperativeHandle } from 'react';
-import SelectComponent from 'react-select';
+import DefaultSelect from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { ThemeContext } from 'contexts/contexts';
 import { IThemeContext } from 'types/types';
 
@@ -12,14 +13,29 @@ export interface ISelectOption<T> {
 
 interface IProps {
   name: string;
+  placeholder?: string;
   options: ISelectOption<string>[];
   handleChange: (selectName: string, value: string) => void;
+  isWide?: boolean;
   isDisabled?: boolean;
   isSearchable?: boolean;
+  isCreatable?: boolean;
 }
 
 const Select = forwardRef(
-  ({ name, options, handleChange, isDisabled, isSearchable }: IProps, ref: any) => {
+  (
+    {
+      name,
+      placeholder,
+      options,
+      handleChange,
+      isWide,
+      isDisabled,
+      isSearchable,
+      isCreatable,
+    }: IProps,
+    ref: any
+  ) => {
     const selectElement: any = useRef();
     useImperativeHandle(ref, () => ({
       clearValue() {
@@ -32,7 +48,7 @@ const Select = forwardRef(
         ...provided,
         backgroundColor: isDisabled ? activeTheme.additional : activeTheme.secondary,
         border: 0,
-        width: 200,
+        width: isWide ? 161 : 200,
         minHeight: 'auto',
         color: activeTheme.fontColor,
         cursor: 'pointer',
@@ -75,6 +91,7 @@ const Select = forwardRef(
         },
         '::-webkit-scrollbar-thumb': {
           background: activeTheme.fontColorAdditional200,
+          border: activeTheme.primary,
         },
         '::-webkit-scrollbar-thumb:hover': {
           background: activeTheme.fontColorAdditional200,
@@ -84,21 +101,41 @@ const Select = forwardRef(
 
     return (
       <Fragment>
-        <SelectComponent
-          ref={selectElement}
-          className="basic-single"
-          classNamePrefix="select"
-          placeholder="Wybierz..."
-          noOptionsMessage={() => 'brak opcji'}
-          isDisabled={isDisabled}
-          isSearchable={isSearchable}
-          isClearable
-          hideSelectedOptions
-          name={`${name}`}
-          onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
-          options={options}
-          styles={customStyles}
-        />
+        {isCreatable ? (
+          <CreatableSelect
+            ref={selectElement}
+            className="basic-single"
+            classNamePrefix="select"
+            placeholder={placeholder || 'Wybierz...'}
+            noOptionsMessage={() => 'brak opcji'}
+            isDisabled={isDisabled}
+            isSearchable={isSearchable}
+            isClearable
+            hideSelectedOptions
+            name={`${name}`}
+            onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
+            options={options}
+            styles={customStyles}
+            formatCreateLabel={inputValue => `${inputValue}`}
+            createOptionPosition={'first'}
+          />
+        ) : (
+          <DefaultSelect
+            ref={selectElement}
+            className="basic-single"
+            classNamePrefix="select"
+            placeholder={placeholder || 'Wybierz...'}
+            noOptionsMessage={() => 'brak opcji'}
+            isDisabled={isDisabled}
+            isSearchable={isSearchable}
+            isClearable
+            hideSelectedOptions
+            name={`${name}`}
+            onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
+            options={options}
+            styles={customStyles}
+          />
+        )}
       </Fragment>
     );
   }
