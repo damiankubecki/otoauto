@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from 'contexts/contexts';
 import { IThemeContext } from 'types/types';
 import PaginationElement from '@mui/material/Pagination';
-import { ThemeContext } from 'contexts/contexts';
 
 interface Props<T> {
   data: T[];
@@ -41,11 +41,11 @@ const usePagination = <T,>({ data, itemsPerPage }: Props<T>) => {
           fontSize: activeTheme.fontSize.l,
           color: activeTheme.fontColor,
         },
-        '& .Mui-selected': {
+        '& .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
           backgroundColor: activeTheme.fontColorAdditional200,
           color: activeTheme.primary,
         },
-        '& .Mui-selected:hover': {
+        '& .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected:hover': {
           backgroundColor: activeTheme.fontColorAdditional100,
         },
       }}
