@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Button = styled.button`
   min-width: 160px;
-  padding: 7px 13px;
+  padding: 5px 13px;
   border: none;
   border-radius: 5px;
   color: ${({ theme }) => theme.primary};
