@@ -40,6 +40,11 @@ const Input = styled.input`
   color: ${({ theme }) => theme.fontColor};
   outline: none;
 
+  &.wide {
+    width: 130px;
+    padding: 5px 10px;
+  }
+
   &:focus {
     border-bottom: 2px solid ${({ theme }) => theme.fontColorAdditional200};
   }
@@ -57,12 +62,18 @@ interface IFormFieldProps {
 
 const FormFieldWrapper = styled.div`
   margin: 15px 0 0;
+  width: 100%;
+`;
+
+const FormFieldChildrenContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const FormField = ({ id, title, children }: IFormFieldProps) => (
   <FormFieldWrapper>
     <Label htmlFor={id}>{title}</Label>
-    {children}
+    <FormFieldChildrenContainer>{children}</FormFieldChildrenContainer>
   </FormFieldWrapper>
 );
 
