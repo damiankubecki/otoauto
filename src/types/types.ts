@@ -105,6 +105,7 @@ export type Description = string;
 
 export interface ICarOffer {
   _id: string;
+  userID: string;
   username: string;
   make: Make;
   model: Model;
