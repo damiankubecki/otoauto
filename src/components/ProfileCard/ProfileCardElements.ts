@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import userAvatarIMG from 'images/user-avatar.png';
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,4 +35,4 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export { Wrapper, Header, Photo, StyledLink as Link, userAvatarIMG };
+export { Wrapper, Header, Photo, StyledLink as Link };
