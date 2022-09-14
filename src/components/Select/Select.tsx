@@ -74,6 +74,10 @@ const Select = forwardRef(
           cursor: 'pointer',
         },
       }),
+      input: (provided: any) => ({
+        ...provided,
+        color: activeTheme.fontColor,
+      }),
       singleValue: (provided: any) => ({
         ...provided,
         transition: 'opacity 300ms',
