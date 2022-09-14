@@ -1,6 +1,14 @@
 import React from 'react';
 import useLoginForm from 'hooks/useLoginForm';
-import { Form, FormField, ElementContainer, LoadingSpinner, Input, Button } from '../FormsElements';
+import {
+  Form,
+  FormField,
+  ElementContainer,
+  LoadingSpinner,
+  Input,
+  ButtonContainer,
+  Button,
+} from '../FormsElements';
 
 const LoginForm = () => {
   const { isLoading, message, form, submitFn } = useLoginForm();
@@ -37,9 +45,9 @@ const LoginForm = () => {
               />
             </FormField>
           </ElementContainer>
-          <ElementContainer>
-            <Button bigger>Zaloguj się</Button>
-          </ElementContainer>
+          <ButtonContainer>
+            <Button>Zaloguj się</Button>
+          </ButtonContainer>
         </>
       )}
     </Form>
