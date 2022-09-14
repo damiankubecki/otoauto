@@ -51,6 +51,10 @@ const Input = styled.input`
 `;
 
 const ElementContainer = styled.div`
+  margin: 10px 0 0;
+`;
+
+const ButtonContainer = styled.div`
   margin: 30px 0 0;
 `;
 
@@ -77,4 +81,15 @@ const FormField = ({ id, title, children }: IFormFieldProps) => (
   </FormFieldWrapper>
 );
 
-export { Form, FormField, ElementContainer, LoadingSpinner, Title, Label, Input, Select, Button };
+export {
+  Form,
+  FormField,
+  ElementContainer,
+  LoadingSpinner,
+  Title,
+  Label,
+  Input,
+  Select,
+  ButtonContainer,
+  Button,
+};
