@@ -2,7 +2,13 @@
 import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 import { Dispatch } from '@reduxjs/toolkit';
-import { API_URL, LOGIN_ENDPOINT, LOGOUT_ENDPOINT, REGISTER_ENDPOINT } from 'config';
+import {
+  API_URL,
+  LOGIN_ENDPOINT,
+  LOGOUT_ENDPOINT,
+  REGISTER_ENDPOINT,
+  USER_LOCALSTORAGE,
+} from 'config';
 
 interface UserState {
   id: null | string;
@@ -15,8 +21,8 @@ interface IUserData {
 }
 
 const initialState: UserState = {
-  id: null,
-  username: '',
+  id: JSON.parse(window.localStorage.getItem(USER_LOCALSTORAGE) || '')?.id || null,
+  username: JSON.parse(window.localStorage.getItem(USER_LOCALSTORAGE) || '')?.username || '',
 };
 
 export const userSlice = createSlice({
@@ -41,7 +47,7 @@ export const loginUserAsync = (userData: IUserData) => async (dispatch: Dispatch
     const response = await axios.post(`${API_URL}/${LOGIN_ENDPOINT}`, { username, password });
     dispatch(loginUser({ id: response.data._id, username: response.data.username }));
 
-    return Promise.resolve('Zalogowano');
+    return Promise.resolve({ message: 'Zalogowano', data: response.data });
   } catch (err: any) {
     dispatch(loginUser({ id: null }));
     if (err?.request.status === 0)
@@ -55,6 +61,7 @@ export const logoutUserAsync = () => async (dispatch: Dispatch) => {
   try {
     await axios.post(`${API_URL}/${LOGOUT_ENDPOINT}`);
     dispatch(logoutUser());
+
     return Promise.resolve('Wylogowano');
   } catch (err: any) {
     if (err?.request.status === 0)
