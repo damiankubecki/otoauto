@@ -1,6 +1,14 @@
 import React from 'react';
 import useRegisterForm from 'hooks/useRegisterForm';
-import { Form, FormField, ElementContainer, LoadingSpinner, Input, Button } from '../FormsElements';
+import {
+  Form,
+  FormField,
+  ElementContainer,
+  LoadingSpinner,
+  Input,
+  ButtonContainer,
+  Button,
+} from '../FormsElements';
 
 const RegisterForm = () => {
   const { isLoading, message, form, submitFn } = useRegisterForm();
@@ -48,9 +56,9 @@ const RegisterForm = () => {
               />
             </FormField>
           </ElementContainer>
-          <ElementContainer>
-            <Button bigger>Utwórz konto</Button>
-          </ElementContainer>
+          <ButtonContainer>
+            <Button>Utwórz konto</Button>
+          </ButtonContainer>
         </>
       )}
     </Form>
