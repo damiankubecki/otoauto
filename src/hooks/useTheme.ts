@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useLocalStorage from './useLocalStorage';
 import { lightMode, darkMode } from 'theme/theme';
 import { ITheme, IThemeContext } from 'types/types';
+import { THEME_LOCALSTORAGE } from 'config';
 
 const useTheme = (): IThemeContext => {
   const { loadFromLocalStorage, saveToLocalStorage } = useLocalStorage();
@@ -13,7 +14,7 @@ const useTheme = (): IThemeContext => {
   };
 
   useEffect(() => {
-    saveToLocalStorage('theme', activeTheme);
+    saveToLocalStorage(THEME_LOCALSTORAGE, activeTheme);
   }, [activeTheme]);
 
   return {
