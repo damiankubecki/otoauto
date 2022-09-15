@@ -15,7 +15,7 @@ interface ISelectsOptions {
   color: ISelectOption<Color>[];
 }
 
-const useCarFormSelects = (selectedMake: Make | null) => {
+const useCarFormSelects = (selectedMake: Make | undefined) => {
   const { cars } = useContext(CarsContext) as ICarsContext;
   const [modelsOfSelectedMake, setModels] = useState<ISelectOption<Model>[] | undefined>(undefined);
   const selectsOptions: ISelectsOptions = {
@@ -30,10 +30,15 @@ const useCarFormSelects = (selectedMake: Make | null) => {
       { value: 'sedan', label: 'sedan' },
       { value: 'SUV', label: 'SUV' },
     ],
-    make: cars.map(car => {
-      return { value: car.make, label: car.make };
-    }),
-    model: modelsOfSelectedMake,
+    make: [
+      ...cars.map(car => {
+        return { value: car.make, label: car.make };
+      }),
+      { value: 'inne', label: 'inne' },
+    ],
+    model: modelsOfSelectedMake
+      ? [...modelsOfSelectedMake, { value: 'inne', label: 'inne' }]
+      : undefined,
     price: [
       { value: '2000', label: '2 000' },
       { value: '5000', label: '5 000' },
@@ -120,10 +125,11 @@ const useCarFormSelects = (selectedMake: Make | null) => {
       { value: 'zielony', label: 'zielony' },
       { value: 'złoty', label: 'złoty' },
       { value: 'żółty', label: 'żółty' },
+      { value: 'inny', label: 'inny' },
     ],
   };
 
-  const getModelsOfSelectedCar = (make: Make | null) => {
+  const getModelsOfSelectedCar = (make: Make | undefined) => {
     const models = cars.find(car => car.make === make)?.models;
     const result: ISelectOption<Model>[] | undefined = models?.map(
       (model): ISelectOption<Model> => ({
