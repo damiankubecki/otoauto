@@ -12,21 +12,21 @@ const useSearchForm = () => {
   const { offers } = useContext(OffersContext) as IOffersContext;
   const [matchingOffers, setMatchingOffers] = useState<ICarOffer[] | null>(offers);
   const [isModelsSelectDisabled, setModelsSelectActivity] = useState(false);
-  const [formValues, setFormValues] = useState<ISearchConditions>({
-    bodystyle: null,
-    make: null,
-    model: null,
-    price_from: null,
-    price_to: null,
-    yearOfProduction_from: null,
-    yearOfProduction_to: null,
-    mileage_from: null,
-    mileage_to: null,
-    fuelType: null,
-    transmission: null,
-    color: null,
+  const [formValues, setFormValues] = useState<Partial<ISearchConditions>>({
+    bodystyle: undefined,
+    make: undefined,
+    model: undefined,
+    price_from: undefined,
+    price_to: undefined,
+    yearOfProduction_from: undefined,
+    yearOfProduction_to: undefined,
+    mileage_from: undefined,
+    mileage_to: undefined,
+    fuelType: undefined,
+    transmission: undefined,
+    color: undefined,
   });
-  const { selectsOptions } = useCarFormSelects(formValues.make || null);
+  const { selectsOptions } = useCarFormSelects(formValues?.make || undefined);
 
   const handleSelectChange = (selectName: string, value: string) => {
     setFormValues(prevState => ({ ...prevState, [selectName]: value }));
