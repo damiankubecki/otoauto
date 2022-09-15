@@ -15,7 +15,6 @@ const useAPI = () => {
 
   const getOffersByUserId = async (id: string) => {
     try {
-      console.log(`${API_URL}/${ALL_OFFERS_ENDPOINT}/${id}`);
       const response = await axios.get(`${API_URL}/${ALL_OFFERS_ENDPOINT}/${id}`);
       const offers = response.data as ICarOffer[];
       return offers;
