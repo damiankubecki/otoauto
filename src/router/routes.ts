@@ -5,6 +5,7 @@ export const routes = {
   logout: '/wyloguj',
   offers: '/oferty',
   offer: '/oferta',
-  addOffer: '/nowa_oferta',
+  addOffer: '/dodaj',
+  modifyOffer: '/modyfikuj',
   profile: '/profil',
 };
