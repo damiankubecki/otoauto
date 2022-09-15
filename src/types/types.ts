@@ -145,3 +145,8 @@ export interface ISearchConditions {
   transmission: Transmission | null;
   color: Color | null;
 }
+
+export interface IUser {
+  _id: string;
+  username: string;
+}
