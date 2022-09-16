@@ -31,6 +31,7 @@ const SearchForm = () => {
                 options={selectsOptions.bodystyle}
                 name="bodystyle"
                 handleChange={handleSelectChange}
+                isWide
               />
             </FormField>
             <FormField title="Rodzaj paliwa" id="fuelType">
@@ -38,6 +39,7 @@ const SearchForm = () => {
                 options={selectsOptions.fuelType}
                 name="fuelType"
                 handleChange={handleSelectChange}
+                isWide
               />
             </FormField>
           </Section>
@@ -50,6 +52,7 @@ const SearchForm = () => {
                   handleSelectChange(selectname, value);
                   modelSelectRef.current.clearValue();
                 }}
+                isWide
               />
             </FormField>
             <FormField title="Skrzynia biegów" id="transmission">
@@ -57,6 +60,7 @@ const SearchForm = () => {
                 options={selectsOptions.transmission}
                 name="transmission"
                 handleChange={handleSelectChange}
+                isWide
               />
             </FormField>
           </Section>
@@ -68,6 +72,7 @@ const SearchForm = () => {
                 name="model"
                 handleChange={handleSelectChange}
                 isDisabled={isModelsSelectDisabled}
+                isWide
               />
             </FormField>
             <FormField title="Kolor" id="color">
@@ -75,6 +80,7 @@ const SearchForm = () => {
                 options={selectsOptions.color}
                 name="color"
                 handleChange={handleSelectChange}
+                isWide
               />
             </FormField>
           </Section>
@@ -85,7 +91,6 @@ const SearchForm = () => {
                   options={selectsOptions.price}
                   name="price_from"
                   placeholder="od"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
@@ -93,7 +98,6 @@ const SearchForm = () => {
                   options={selectsOptions.price}
                   name="price_to"
                   placeholder="do"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
@@ -105,7 +109,6 @@ const SearchForm = () => {
                   options={selectsOptions.yearOfProduction}
                   name="yearOfProduction_from"
                   placeholder="od"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
@@ -113,7 +116,6 @@ const SearchForm = () => {
                   options={selectsOptions.yearOfProduction}
                   name="yearOfProduction_to"
                   placeholder="do"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
@@ -125,7 +127,6 @@ const SearchForm = () => {
                   options={selectsOptions.mileage}
                   name="mileage_from"
                   placeholder="od"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
@@ -133,7 +134,6 @@ const SearchForm = () => {
                   options={selectsOptions.mileage}
                   name="mileage_to"
                   placeholder="do"
-                  isWide
                   isCreatable
                   handleChange={handleSelectChange}
                 />
