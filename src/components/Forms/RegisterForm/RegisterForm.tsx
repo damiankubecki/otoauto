@@ -34,28 +34,24 @@ const RegisterForm = () => {
               onChange={form.handleInputChange}
             />
           </FormField>
-          <ElementContainer>
-            <FormField title="Hasło:" id="password">
-              <Input
-                id="password"
-                type="password"
-                name="password"
-                value={form.values.password}
-                onChange={form.handleInputChange}
-              />
-            </FormField>
-          </ElementContainer>
-          <ElementContainer>
-            <FormField title="Powtórz hasło:" id="password-repeat">
-              <Input
-                id="password_repeat"
-                type="password"
-                name="password_repeat"
-                value={form.values.password_repeat}
-                onChange={form.handleInputChange}
-              />
-            </FormField>
-          </ElementContainer>
+          <FormField title="Hasło:" id="password">
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              value={form.values.password}
+              onChange={form.handleInputChange}
+            />
+          </FormField>
+          <FormField title="Powtórz hasło:" id="password-repeat">
+            <Input
+              id="password_repeat"
+              type="password"
+              name="password_repeat"
+              value={form.values.password_repeat}
+              onChange={form.handleInputChange}
+            />
+          </FormField>
           <ButtonContainer>
             <Button>Utwórz konto</Button>
           </ButtonContainer>
