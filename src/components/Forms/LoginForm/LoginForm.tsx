@@ -34,17 +34,15 @@ const LoginForm = () => {
               onChange={form.handleInputChange}
             />
           </FormField>
-          <ElementContainer>
-            <FormField title="Hasło:" id="password">
-              <Input
-                id="password"
-                type="password"
-                name="password"
-                value={form.values.password}
-                onChange={form.handleInputChange}
-              />
-            </FormField>
-          </ElementContainer>
+          <FormField title="Hasło:" id="password">
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              value={form.values.password}
+              onChange={form.handleInputChange}
+            />
+          </FormField>
           <ButtonContainer>
             <Button>Zaloguj się</Button>
           </ButtonContainer>
