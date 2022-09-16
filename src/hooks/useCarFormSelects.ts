@@ -3,7 +3,7 @@ import { CarsContext } from 'contexts/contexts';
 import { ICarsContext, Bodystyle, Make, Model, Color, FuelType, Transmission } from 'types/types';
 import { ISelectOption } from 'components/Select/Select';
 
-interface ISelectsOptions {
+export interface ISelectsOptions {
   bodystyle: ISelectOption<Bodystyle>[];
   make: ISelectOption<Make>[];
   model: ISelectOption<Model>[] | undefined;
