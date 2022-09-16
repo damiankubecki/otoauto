@@ -11,11 +11,14 @@ export interface ISelectOption<T> {
   label: string;
 }
 
+export type IHandleSelectChange = (selectName: string, value: string) => void;
+
 interface IProps {
   name: string;
   placeholder?: string;
   options: ISelectOption<string>[];
-  handleChange: (selectName: string, value: string) => void;
+  handleChange: IHandleSelectChange;
+  defaultValueIndex?: number;
   isWide?: boolean;
   isDisabled?: boolean;
   isSearchable?: boolean;
@@ -29,6 +32,7 @@ const Select = forwardRef(
       placeholder,
       options,
       handleChange,
+      defaultValueIndex,
       isWide,
       isDisabled,
       isSearchable,
@@ -48,7 +52,7 @@ const Select = forwardRef(
         ...provided,
         backgroundColor: isDisabled ? activeTheme.additional : activeTheme.secondary,
         border: 0,
-        width: isWide ? 161 : 200,
+        width: isWide ? 200 : 160,
         minHeight: 'auto',
         color: activeTheme.fontColor,
         cursor: 'pointer',
@@ -135,6 +139,7 @@ const Select = forwardRef(
             isClearable
             hideSelectedOptions
             name={`${name}`}
+            defaultValue={defaultValueIndex ? options[defaultValueIndex] : undefined}
             onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
             options={options}
             styles={customStyles}
