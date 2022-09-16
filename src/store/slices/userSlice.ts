@@ -9,6 +9,7 @@ import {
   REGISTER_ENDPOINT,
   USER_LOCALSTORAGE,
 } from 'config';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 interface UserState {
   id: null | string;
@@ -20,9 +21,11 @@ interface IUserData {
   password: string;
 }
 
+const { loadFromLocalStorage } = useLocalStorage();
+
 const initialState: UserState = {
-  id: JSON.parse(window.localStorage.getItem(USER_LOCALSTORAGE) || '')?.id || null,
-  username: JSON.parse(window.localStorage.getItem(USER_LOCALSTORAGE) || '')?.username || '',
+  id: loadFromLocalStorage(USER_LOCALSTORAGE)?.id || null,
+  username: loadFromLocalStorage(USER_LOCALSTORAGE)?.username || '',
 };
 
 export const userSlice = createSlice({
