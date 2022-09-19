@@ -1,4 +1,9 @@
+import { ChangeEvent } from 'react';
+
 export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+export type Nullable<T> = { [K in keyof T]: T[K] | null };
+
+export type IHandleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
 export interface ITheme {
   name: string;
@@ -95,7 +100,8 @@ export type Color =
   | 'bordowy'
   | 'metaliczny'
   | 'brązowy'
-  | 'żółty';
+  | 'żółty'
+  | 'inny';
 
 export type HP = number;
 
@@ -132,18 +138,18 @@ export interface ICarData {
 }
 
 export interface ISearchConditions {
-  bodystyle: Bodystyle | null;
-  make: Make | null;
-  model: Model | null;
-  price_from: string | null;
-  price_to: string | null;
-  yearOfProduction_from: string | null;
-  yearOfProduction_to: string | null;
-  mileage_from: string | null;
-  mileage_to: string | null;
-  fuelType: FuelType | null;
-  transmission: Transmission | null;
-  color: Color | null;
+  bodystyle: Bodystyle;
+  make: Make;
+  model: Model;
+  price_from: string;
+  price_to: string;
+  yearOfProduction_from: string;
+  yearOfProduction_to: string;
+  mileage_from: string;
+  mileage_to: string;
+  fuelType: FuelType;
+  transmission: Transmission;
+  color: Color;
 }
 
 export interface IUser {
