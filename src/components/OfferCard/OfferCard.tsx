@@ -15,7 +15,7 @@ import {
   Content,
 } from './OfferCardElements';
 
-interface Props extends Optional<ICarOffer, 'location' | 'img'> {
+interface Props extends Optional<ICarOffer, 'location' | 'image'> {
   extended?: boolean;
 }
 
@@ -29,18 +29,17 @@ const OfferCard = ({
   cost,
   engine,
   location,
-  img,
+  image,
   extended,
 }: Props) => {
   const { activeTheme } = useContext(ThemeContext) as IThemeContext;
   const { Icon } = useFontAwesome();
-  const offerImage = img || activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG;
-
+  const offerImage = image || (activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG);
   return (
     <Link to={`${routes.offer}/${_id}`}>
       {extended ? (
         <WrapperExtended>
-          <Photo extended img={offerImage} />
+          <Photo extended img={offerImage || ''} />
           <Content extended>
             <Title extended>
               {make} {model}
@@ -58,7 +57,7 @@ const OfferCard = ({
         </WrapperExtended>
       ) : (
         <WrapperDefault>
-          <Photo img={offerImage} />
+          <Photo img={offerImage || ''} />
           <Content>
             <Title>
               {make} {model} {yearOfProduction}

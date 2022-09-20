@@ -21,7 +21,7 @@ const WrapperExtended = styled.div`
   overflow: hidden;
 `;
 
-const Photo = styled.div<{ img: string; extended?: boolean }>`
+const Photo = styled.div<{ img?: string; extended?: boolean }>`
   height: ${({ extended }) => (extended ? 'auto' : '180px')};
   width: ${({ extended }) => (extended ? '250px' : 'auto')};
   background-image: ${({ img }) => `url(${img})`};
