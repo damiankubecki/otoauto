@@ -14,7 +14,9 @@ const MainInfoSection = ({ offer }: Props) => {
 
   return (
     <Wrapper>
-      <Photo img={offer?.img || activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG} />
+      <Photo
+        img={offer?.image || (activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG)}
+      />
       <MainInfo>
         <Header>
           {offer?.make} {offer?.model}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  flex-basis: 60%;
+  flex-basis: 70%;
 `;
 
 const Header = styled.h4`

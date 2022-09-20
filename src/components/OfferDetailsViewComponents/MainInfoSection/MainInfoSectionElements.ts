@@ -8,22 +8,22 @@ const Wrapper = styled.section`
 `;
 
 const Photo = styled.div<{ img: string }>`
-  flex-basis: 65%;
-  height: 350px;
+  flex-basis: 70%;
+  height: 400px;
   background-image: ${({ img }) => `url(${img})`};
   background-size: cover;
   background-position: center;
 `;
 
 const MainInfo = styled.div`
-  flex-basis: 35%;
+  flex-basis: 30%;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 `;
 
 const Header = styled.h3`
-  padding: 10px 0 0;
   color: ${({ theme }) => theme.fontColor};
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.boldFont};
