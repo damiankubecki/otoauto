@@ -1,5 +1,5 @@
 import React from 'react';
-import { IArticleItem } from 'components/FooterArticle/FooterArticle';
+import { IArticleItem } from 'components/FooterComponents/Article/Article';
 import { Wrapper, Article } from './FooterElements';
 
 const Footer = () => {

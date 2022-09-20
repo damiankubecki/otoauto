@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FooterArticle from 'components/FooterArticle/FooterArticle';
+import FooterArticle from 'components/FooterComponents/Article/Article';
 
 const Wrapper = styled.footer`
   display: flex;
