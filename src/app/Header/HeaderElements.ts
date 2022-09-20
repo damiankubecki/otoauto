@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import HeaderTitle from 'components/Header/HeaderTitle/HeaderTitle';
-import HeaderUserActions from 'components/Header/HeaderUserActions/HeaderUserActions';
+import Title from 'components/HeaderComponents/Title/Title';
+import UserActions from 'components/HeaderComponents/UserActions/UserActions';
 import ThemeSwitch from 'components/ThemeSwitch/ThemeSwitch';
 import Button from 'components/Button/Button';
 
@@ -22,12 +22,4 @@ const ItemContainer = styled.div`
   margin-left: 15px;
 `;
 
-export {
-  Wrapper,
-  Section,
-  HeaderTitle as Title,
-  HeaderUserActions as UserActions,
-  ItemContainer,
-  ThemeSwitch,
-  Button,
-};
+export { Wrapper, Section, Title, UserActions, ItemContainer, ThemeSwitch, Button };
