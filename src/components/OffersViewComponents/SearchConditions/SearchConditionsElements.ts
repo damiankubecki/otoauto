@@ -9,13 +9,13 @@ const Wrapper = styled.section`
 const Text = styled.p`
   margin: 3px 0;
   color: ${({ theme }) => theme.fontColor};
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.boldFont};
 `;
 
 const Span = styled.span`
   display: block;
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.lightFont};
 `;
 
