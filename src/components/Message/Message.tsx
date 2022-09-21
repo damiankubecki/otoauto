@@ -1,6 +1,6 @@
 import React from 'react';
 import { IMessage } from 'types/types';
-import { Wrapper, Text, Button } from './MessageElements';
+import { MessageContainer, Wrapper, Text, Button } from './MessageElements';
 
 const Message = ({ textContent, buttonContent, buttonFn }: IMessage) => {
   return (
@@ -11,4 +11,5 @@ const Message = ({ textContent, buttonContent, buttonFn }: IMessage) => {
   );
 };
 
+export { MessageContainer };
 export default Message;

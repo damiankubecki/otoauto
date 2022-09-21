@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import Button from 'components/Button/Button';
 
+const MessageContainer = styled.div`
+  margin-top: 40px;
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,4 +18,4 @@ const Text = styled.p`
   font-weight: ${({ theme }) => theme.boldFont};
 `;
 
-export { Wrapper, Text, Button };
+export { MessageContainer, Wrapper, Text, Button };
