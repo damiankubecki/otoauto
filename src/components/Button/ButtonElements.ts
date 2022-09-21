@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Button = styled.button`
-  min-width: 160px;
-  padding: 5px 13px;
+  min-width: 150px;
+  padding: 4px 13px;
   border: none;
   border-radius: 5px;
   color: ${({ theme }) => theme.primary};
@@ -20,9 +20,9 @@ const Button = styled.button`
   }
 
   &.bigger {
-    min-width: 250px;
-    padding: 8px 30px;
-    font-size: ${({ theme }) => theme.fontSize.m};
+    min-width: 180px;
+    padding: 6px 20px;
+    font-size: ${({ theme }) => theme.fontSize.s};
   }
 
   &.red {
