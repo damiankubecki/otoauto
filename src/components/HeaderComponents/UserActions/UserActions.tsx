@@ -19,13 +19,15 @@ const HeaderLoginRegister = () => {
         <>
           <Username>Witaj, {user.username}</Username>
           {' | '}
-          <Button to={routes.logout}>Wyloguj się</Button>
+          <Button to={`${routes.profile}/${user.id}`}>twój profil</Button>
+          {' | '}
+          <Button to={routes.logout}>wyloguj się</Button>
         </>
       ) : (
         <>
-          <Button to={routes.login}>Zaloguj się</Button>
+          <Button to={routes.login}>zaloguj się</Button>
           {' | '}
-          <Button to={routes.register}>Zarejestruj się</Button>
+          <Button to={routes.register}>zarejestruj się</Button>
         </>
       )}
     </Wrapper>

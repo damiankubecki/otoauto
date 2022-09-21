@@ -11,7 +11,8 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.fontColor};
   font-size: ${({ theme }) => theme.fontSize.xxl};
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-style: italic;
   font-weight: ${({ theme }) => theme.boldFont};
 `;
 
