@@ -7,7 +7,8 @@ import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  min-width: 400px;
+  align-items: center;
+  min-width: 300px;
   margin: 0 auto;
   padding: 20px 25px;
   background-color: ${({ theme }) => theme.primary};
@@ -30,8 +31,9 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
+  height: 36px;
   width: 100%;
-  padding: 8px 15px;
+  padding: 5px 10px;
   border: none;
   border-bottom: 2px solid transparent;
   border-radius: 4px;
@@ -48,6 +50,43 @@ const Input = styled.input`
   &:focus {
     border-bottom: 2px solid ${({ theme }) => theme.fontColorAdditional200};
   }
+
+  &[type='file'] {
+    padding: 5px 0;
+    background-color: transparent;
+
+    &::file-selector-button {
+      padding: 3px 15px;
+      color: ${({ theme }) => theme.primary};
+      background-color: ${({ theme }) => theme.fontColorAdditional200};
+      font-size: ${({ theme }) => theme.fontSize.s};
+      border-radius: 5px;
+      border: none;
+      font-weight: ${({ theme }) => theme.boldFont};
+      cursor: pointer;
+      transition: 0.15s;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.fontColorAdditional100};
+      }
+    }
+
+    &:focus {
+      border-bottom: none;
+    }
+  }
+`;
+
+const Textarea = styled.textarea`
+  width: 100%;
+  min-height: 350px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: ${({ theme }) => theme.secondary};
+  font-size: ${({ theme }) => theme.fontSize.m};
+  color: ${({ theme }) => theme.fontColor};
+  outline: none;
 `;
 
 const ElementContainer = styled.div`
@@ -55,7 +94,7 @@ const ElementContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  margin: 30px 0 0;
+  margin: 30px auto 0;
 `;
 
 interface IFormFieldProps {
@@ -65,7 +104,7 @@ interface IFormFieldProps {
 }
 
 const FormFieldWrapper = styled.div`
-  margin: 15px 0 0;
+  margin: 15px auto 0;
   width: 100%;
 `;
 
@@ -89,6 +128,7 @@ export {
   Title,
   Label,
   Input,
+  Textarea,
   Select,
   ButtonContainer,
   Button,
