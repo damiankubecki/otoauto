@@ -8,8 +8,9 @@ const Wrapper = styled.section`
 `;
 
 const Photo = styled.div<{ img: string }>`
+  position: relative;
   flex-basis: 70%;
-  height: 400px;
+  height: 415px;
   background-image: ${({ img }) => `url(${img})`};
   background-size: cover;
   background-position: center;
@@ -40,6 +41,7 @@ const Price = styled.p`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin: 0;
   color: ${({ theme }) => theme.red};
   font-size: ${({ theme }) => theme.fontSize.xxl};
   font-weight: ${({ theme }) => theme.boldFont};
