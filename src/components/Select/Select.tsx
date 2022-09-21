@@ -18,7 +18,7 @@ interface IProps {
   placeholder?: string;
   options: ISelectOption<string>[];
   handleChange: IHandleSelectChange;
-  defaultValueIndex?: number;
+  defaultValue?: ISelectOption<string> | undefined;
   isWide?: boolean;
   isDisabled?: boolean;
   isSearchable?: boolean;
@@ -32,7 +32,7 @@ const Select = forwardRef(
       placeholder,
       options,
       handleChange,
-      defaultValueIndex,
+      defaultValue,
       isWide,
       isDisabled,
       isSearchable,
@@ -121,6 +121,7 @@ const Select = forwardRef(
             isClearable
             hideSelectedOptions
             name={`${name}`}
+            value={defaultValue || undefined}
             onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
             options={options}
             styles={customStyles}
@@ -139,7 +140,7 @@ const Select = forwardRef(
             isClearable
             hideSelectedOptions
             name={`${name}`}
-            defaultValue={defaultValueIndex ? options[defaultValueIndex] : undefined}
+            value={defaultValue || undefined}
             onChange={(e: any) => handleChange(`${name}`, e ? e.value : null)}
             options={options}
             styles={customStyles}
