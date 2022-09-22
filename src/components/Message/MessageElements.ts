@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Button from 'components/Button/Button';
 
 const MessageContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const Wrapper = styled.div`
