@@ -24,7 +24,10 @@ const useMessage = () => {
     <Message
       textContent={message.textContent}
       buttonContent={message.buttonContent}
-      buttonFn={message.buttonFn}
+      buttonFn={() => {
+        if (message.buttonFn) message.buttonFn();
+        hideMessage();
+      }}
     />
   );
 
