@@ -38,4 +38,30 @@ const StyledNavLink = styled(NavLink)`
   display: block;
 `;
 
-export { Button, StyledNavLink as NavLink };
+const StyledBackButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.fontColorAdditional200};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  transition: 0.15s;
+  font-weight: bold;
+
+  &:hover {
+    color: ${({ theme }) => theme.fontColorAdditional100};
+  }
+`;
+
+const StyledIconButton = styled.button`
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: 2px solid ${({ theme }) => theme.additional};
+  transition: 0.1s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.additional};
+  }
+`;
+
+export { Button, StyledIconButton, StyledBackButton, StyledNavLink as NavLink };
