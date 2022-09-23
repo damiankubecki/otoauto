@@ -48,6 +48,15 @@ export interface IOffersContext {
   offers: ICarOffer[];
 }
 
+export interface IMessageContext {
+  showMessage: ({ textContent, buttonContent, buttonFn }: IMessage) => void;
+  hideMessage?: () => void;
+}
+
+export interface ILoadingContext {
+  setLoading: (value: boolean) => void;
+}
+
 export interface IView {
   name: string;
   path: string;
@@ -57,7 +66,7 @@ export interface IView {
 export interface IMessage {
   textContent: string;
   buttonContent: string;
-  buttonFn: () => void;
+  buttonFn?: () => void;
 }
 
 export type Bodystyle =
@@ -98,7 +107,6 @@ export type Color =
   | 'złoty'
   | 'czerwony'
   | 'bordowy'
-  | 'metaliczny'
   | 'brązowy'
   | 'żółty'
   | 'inny';
@@ -127,7 +135,7 @@ export interface ICarOffer {
   description: Description;
   location: Location;
   date: string;
-  img: string;
+  image: string;
 }
 
 export interface ICarData {
@@ -156,3 +164,5 @@ export interface IUser {
   _id: string;
   username: string;
 }
+
+export type OfferFormType = 'add' | 'modify';
