@@ -1,30 +1,15 @@
 import React from 'react';
-import { IArticleItem } from 'components/FooterComponents/Article/Article';
 import { Wrapper, Article } from './FooterElements';
+import useFooter from 'hooks/useFooter';
 
 const Footer = () => {
-  const toolsItems: IArticleItem[] = [
-    {
-      content: 'Umowa kupna sprzedaży',
-      href: 'https://www.autocentrum.pl/dokumenty-dla-kierowcy/umowa-kupna-i-sprzedazy/',
-    },
-  ];
-  const infoItems: IArticleItem[] = [
-    {
-      content: 'Testy samochodów',
-      href: 'https://www.youtube.com/results?search_query=testy+samochod%C3%B3w',
-    },
-  ];
-  const customerServiceItems: IArticleItem[] = [
-    { content: '+48 999 999 999' },
-    { content: 'motogablota@gmail.com' },
-  ];
+  const { toolsArticles, infoArticles, customerServiceArticles } = useFooter();
 
   return (
     <Wrapper>
-      <Article title="Narzędzia" items={toolsItems} />
-      <Article title="Obsługa klienta" items={customerServiceItems} />
-      <Article title="Przydatne informacje" items={infoItems} />
+      <Article title="Narzędzia" items={toolsArticles} />
+      <Article title="Obsługa klienta" items={customerServiceArticles} />
+      <Article title="Przydatne informacje" items={infoArticles} />
     </Wrapper>
   );
 };
