@@ -1,11 +1,12 @@
-import { useState, FormEvent, ChangeEventHandler } from 'react';
+import { useState, FormEvent, ChangeEventHandler, useContext } from 'react';
 import { loginUserAsync } from 'store/slices/userSlice';
 import { useAppDispatch } from 'hooks/useRedux';
-import useMessage from 'hooks/useMessage';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
 import { routes } from 'router/routes';
 import { USER_LOCALSTORAGE } from 'config';
+import { LoadingContext, MessageContext } from 'contexts/contexts';
+import { ILoadingContext, IMessageContext } from 'types/types';
 
 interface IFormValues {
   username: string;
@@ -13,11 +14,11 @@ interface IFormValues {
 }
 
 const useLoginForm = () => {
+  const { setLoading } = useContext(LoadingContext) as ILoadingContext;
+  const { showMessage } = useContext(MessageContext) as IMessageContext;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { saveToLocalStorage } = useLocalStorage();
-  const { MessageElement, isMessageActive, showMessage, hideMessage } = useMessage();
-  const [isLoading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState<IFormValues>({ username: '', password: '' });
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -45,19 +46,10 @@ const useLoginForm = () => {
         buttonFn: () => navigate(`${routes.home}`),
       });
     } catch (err) {
-      showMessage({
-        textContent: `${err}`,
-        buttonContent: 'Spróbuj ponownie',
-        buttonFn: hideMessage,
-      });
+      showMessage({ textContent: `${err}`, buttonContent: 'Spróbuj ponownie' });
     }
     setLoading(false);
     clearForm();
-  };
-
-  const message = {
-    isActive: isMessageActive,
-    element: MessageElement,
   };
 
   const form = {
@@ -65,7 +57,7 @@ const useLoginForm = () => {
     handleInputChange,
   };
 
-  return { isLoading, message, form, submitFn };
+  return { form, submitFn };
 };
 
 export default useLoginForm;

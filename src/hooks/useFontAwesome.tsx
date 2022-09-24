@@ -8,16 +8,18 @@ import {
   faMoon,
   faSun,
   faLocationDot,
+  faTrashCan,
+  faPenToSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
-interface IIconProps {
+export interface IIconProps {
   color: string;
   size: SizeProp;
   icon: IconProp;
 }
 
 const useFontAwesome = () => {
-  library.add(faPlus, faUser, faHeart, faMoon, faSun, faLocationDot);
+  library.add(faPlus, faUser, faHeart, faMoon, faSun, faLocationDot, faTrashCan, faPenToSquare);
 
   const Icon = ({ color, size, icon }: IIconProps): JSX.Element => (
     <FontAwesomeIcon color={color} size={size} icon={icon} />

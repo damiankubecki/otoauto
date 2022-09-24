@@ -3,10 +3,21 @@ import { CarsContext } from 'contexts/contexts';
 import { ICarsContext, Bodystyle, Make, Model, Color, FuelType, Transmission } from 'types/types';
 import { ISelectOption } from 'components/Select/Select';
 
+export type SelectsTypes =
+  | 'bodystyle'
+  | 'make'
+  | 'model'
+  | 'price'
+  | 'yearOfProduction'
+  | 'mileage'
+  | 'fuelType'
+  | 'transmission'
+  | 'color';
+
 export interface ISelectsOptions {
   bodystyle: ISelectOption<Bodystyle>[];
   make: ISelectOption<Make>[];
-  model: ISelectOption<Model>[] | undefined;
+  model: ISelectOption<Model>[] | null;
   price: ISelectOption<string>[];
   yearOfProduction: ISelectOption<string>[];
   mileage: ISelectOption<string>[];
@@ -15,9 +26,9 @@ export interface ISelectsOptions {
   color: ISelectOption<Color>[];
 }
 
-const useCarFormSelects = (selectedMake: Make | undefined) => {
+const useCarFormSelects = (selectedMake: Make | null) => {
   const { cars } = useContext(CarsContext) as ICarsContext;
-  const [modelsOfSelectedMake, setModels] = useState<ISelectOption<Model>[] | undefined>(undefined);
+  const [modelsOfSelectedMake, setModels] = useState<ISelectOption<Model>[] | null>(null);
   const selectsOptions: ISelectsOptions = {
     bodystyle: [
       { value: 'auta małe', label: 'auta małe' },
@@ -38,7 +49,7 @@ const useCarFormSelects = (selectedMake: Make | undefined) => {
     ],
     model: modelsOfSelectedMake
       ? [...modelsOfSelectedMake, { value: 'inne', label: 'inne' }]
-      : undefined,
+      : null,
     price: [
       { value: '2000', label: '2 000' },
       { value: '5000', label: '5 000' },
@@ -118,25 +129,27 @@ const useCarFormSelects = (selectedMake: Make | undefined) => {
       { value: 'czarny', label: 'czarny' },
       { value: 'czerwony', label: 'czerwony' },
       { value: 'grafitowy', label: 'grafitowy' },
-      { value: 'metaliczny', label: 'metaliczny' },
       { value: 'niebieski', label: 'niebieski' },
       { value: 'różowy', label: 'różowy' },
       { value: 'srebrny', label: 'srebrny' },
       { value: 'zielony', label: 'zielony' },
       { value: 'złoty', label: 'złoty' },
       { value: 'żółty', label: 'żółty' },
+      { value: 'pomarańczowy', label: 'pomarańczowy' },
+      { value: 'fioletowy', label: 'fioletowy' },
       { value: 'inny', label: 'inny' },
     ],
   };
 
-  const getModelsOfSelectedCar = (make: Make | undefined) => {
+  const getModelsOfSelectedCar = (make: Make | null) => {
     const models = cars.find(car => car.make === make)?.models;
-    const result: ISelectOption<Model>[] | undefined = models?.map(
-      (model): ISelectOption<Model> => ({
-        value: model,
-        label: `${model}`,
-      })
-    );
+    const result: ISelectOption<Model>[] | null =
+      models?.map(
+        (model): ISelectOption<Model> => ({
+          value: model,
+          label: `${model}`,
+        })
+      ) || null;
     return result;
   };
 

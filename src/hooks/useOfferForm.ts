@@ -1,16 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useRef, useEffect, useContext } from 'react';
-import useCarFormSelects from 'hooks/useCarFormSelects';
-import { IHandleInputChange, IUserContext, OfferFormType } from 'types/types';
-import { IHandleSelectChange } from 'components/Select/Select';
-import { IFormValues } from 'components/Forms/OfferForm/OfferForm';
-import { useAppDispatch } from 'hooks/useRedux';
-import { addNewOfferAsync, updateOfferAsync } from 'store/slices/offersSlice';
-import { UserContext } from 'contexts/contexts';
-import useMessage from './useMessage';
 import { useNavigate, useParams } from 'react-router';
+import useCarFormSelects from 'hooks/useCarFormSelects';
+import { useAppDispatch } from 'hooks/useRedux';
+import useAPI from 'hooks/useApi';
+import { LoadingContext, MessageContext, UserContext } from 'contexts/contexts';
+import { addNewOfferAsync, updateOfferAsync } from 'store/slices/offersSlice';
+import {
+  IHandleInputChange,
+  ILoadingContext,
+  IMessageContext,
+  IUserContext,
+  OfferFormType,
+} from 'types/types';
+import { IFormValues } from 'components/Forms/OfferForm/OfferForm';
+import { IHandleSelectChange } from 'components/Select/Select';
 import { routes } from 'router/routes';
-import useAPI from './useApi';
 
 interface Props {
   initialFormValues: IFormValues;
@@ -19,14 +24,13 @@ interface Props {
 
 const useOfferForm = ({ initialFormValues, type }: Props) => {
   const user = useContext(UserContext) as IUserContext;
+  const { setLoading } = useContext(LoadingContext) as ILoadingContext;
+  const { showMessage } = useContext(MessageContext) as IMessageContext;
   const dispatch = useAppDispatch();
   const modelSelectRef: any = useRef();
   const navigate = useNavigate();
   const location = useParams();
   const { getOfferById } = useAPI();
-  const { MessageContainer, MessageElement, isMessageActive, showMessage, hideMessage } =
-    useMessage();
-  const [isLoading, setLoading] = useState(false);
   const [isModelsSelectDisabled, setModelsSelectActivity] = useState(false);
   const [formValues, setFormValues] = useState<IFormValues>(initialFormValues);
   const { selectsOptions } = useCarFormSelects(formValues?.make || null);
@@ -76,11 +80,7 @@ const useOfferForm = ({ initialFormValues, type }: Props) => {
             });
           })
           .catch(err => {
-            showMessage({
-              textContent: err,
-              buttonContent: 'Sporóbuj ponownie',
-              buttonFn: hideMessage,
-            });
+            showMessage({ textContent: err, buttonContent: 'Sporóbuj ponownie' });
           })
           .finally(() => setLoading(false));
       } else {
@@ -99,11 +99,7 @@ const useOfferForm = ({ initialFormValues, type }: Props) => {
             });
           })
           .catch(err => {
-            showMessage({
-              textContent: err,
-              buttonContent: 'Sporóbuj ponownie',
-              buttonFn: hideMessage,
-            });
+            showMessage({ textContent: err, buttonContent: 'Sporóbuj ponownie' });
           })
           .finally(() => setLoading(false));
       }
@@ -125,12 +121,6 @@ const useOfferForm = ({ initialFormValues, type }: Props) => {
     modelSelectRef,
     isModelsSelectDisabled,
     formValues,
-    message: {
-      container: MessageContainer,
-      element: MessageElement,
-      isActive: isMessageActive,
-    },
-    isLoading,
     handleMakeSelectChange,
     handleSelectChange,
     handleInputChange,

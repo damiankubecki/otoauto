@@ -26,7 +26,7 @@ const useSearchForm = () => {
     transmission: undefined,
     color: undefined,
   });
-  const { selectsOptions } = useCarFormSelects(formValues?.make || undefined);
+  const { selectsOptions } = useCarFormSelects(formValues?.make || null);
 
   const handleSelectChange = (selectName: string, value: string) => {
     setFormValues(prevState => ({ ...prevState, [selectName]: value }));

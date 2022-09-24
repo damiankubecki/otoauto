@@ -1,8 +1,9 @@
-import { useState, FormEvent, ChangeEventHandler } from 'react';
+import { useState, FormEvent, ChangeEventHandler, useContext } from 'react';
 import { registerUserAsync } from 'store/slices/userSlice';
-import useMessage from 'hooks/useMessage';
 import { useNavigate } from 'react-router';
 import { routes } from 'router/routes';
+import { LoadingContext, MessageContext } from 'contexts/contexts';
+import { ILoadingContext, IMessageContext } from 'types/types';
 
 interface IFormValues {
   username: string;
@@ -11,9 +12,9 @@ interface IFormValues {
 }
 
 const useRegisterForm = () => {
+  const { setLoading } = useContext(LoadingContext) as ILoadingContext;
+  const { showMessage } = useContext(MessageContext) as IMessageContext;
   const navigate = useNavigate();
-  const { MessageElement, isMessageActive, showMessage, hideMessage } = useMessage();
-  const [isLoading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState<IFormValues>({
     username: '',
     password: '',
@@ -38,17 +39,14 @@ const useRegisterForm = () => {
       showMessage({
         textContent: messageTextContent,
         buttonContent: 'Spróbuj ponownie',
-        buttonFn: () => {
-          navigate(`${routes.register}`);
-          hideMessage();
-        },
+        buttonFn: () => navigate(`${routes.register}`),
       });
       return false;
     }
     return true;
   };
 
-  const submitFn = async (e: FormEvent<EventTarget>) => {
+  const handleFormSubmit = async (e: FormEvent<EventTarget>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -65,28 +63,14 @@ const useRegisterForm = () => {
         });
       }
     } catch (err) {
-      showMessage({
-        textContent: `${err}`,
-        buttonContent: 'Spróbuj ponownie',
-        buttonFn: hideMessage,
-      });
+      showMessage({ textContent: `${err}`, buttonContent: 'Spróbuj ponownie' });
     }
 
     setLoading(false);
     clearForm();
   };
 
-  const message = {
-    isActive: isMessageActive,
-    element: MessageElement,
-  };
-
-  const form = {
-    values: { ...formValues },
-    handleInputChange,
-  };
-
-  return { isLoading, message, form, submitFn };
+  return { formValues, handleInputChange, handleFormSubmit };
 };
 
 export default useRegisterForm;
