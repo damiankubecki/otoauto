@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Section>
-        <Title>motogablota</Title>
+        <Title>otoauto</Title>
         <ItemContainer>
           <ThemeSwitch />
         </ItemContainer>

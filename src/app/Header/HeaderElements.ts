@@ -10,6 +10,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   padding: 2px 35px;
   background-color: ${({ theme }) => theme.primary};
+  border-bottom: 2px solid ${({ theme }) => theme.secondary};
   z-index: 1;
 `;
 
