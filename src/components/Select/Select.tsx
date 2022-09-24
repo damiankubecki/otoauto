@@ -65,16 +65,20 @@ const Select = forwardRef(
         backgroundColor: activeTheme.secondary,
         width: 200,
       }),
-      option: (provided: any, state: { isSelected: any }) => ({
+      option: (provided: any, state: { isSelected: any; isFocused: any }) => ({
         ...provided,
         borderBottom: activeTheme.fontColorAdditional200,
-        color: activeTheme.fontColor,
-        backgroundColor: state.isSelected ? activeTheme.secondary : activeTheme.primary,
+        color:
+          (state.isSelected && activeTheme.fontColorAdditional200) ||
+          (state.isFocused && activeTheme.fontColorAdditional200) ||
+          activeTheme.fontColor,
+        backgroundColor:
+          (state.isSelected && activeTheme.secondary) ||
+          (state.isFocused && activeTheme.secondary) ||
+          activeTheme.primary,
         padding: '5px 10px',
         fontSize: activeTheme.fontSize.s,
         '&:hover': {
-          color: activeTheme.fontColorAdditional200,
-          backgroundColor: activeTheme.secondary,
           cursor: 'pointer',
         },
       }),
