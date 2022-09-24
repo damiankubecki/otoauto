@@ -136,6 +136,7 @@ const OfferForm = ({
                 value={values.mileage || ''}
                 onChange={handleInputChange}
                 required
+                max={999999}
               />
             </FormField>
           </Section>
@@ -147,6 +148,7 @@ const OfferForm = ({
                 value={values.hp || ''}
                 onChange={handleInputChange}
                 required
+                max={9999}
               />
             </FormField>
             <FormField title="Pojemność silnika (cm3)" id="engine">
@@ -156,6 +158,7 @@ const OfferForm = ({
                 value={values.engine || ''}
                 onChange={handleInputChange}
                 required
+                max={9999}
               />
             </FormField>
             <FormField title="Lokalizacja" id="location">
@@ -165,6 +168,7 @@ const OfferForm = ({
                 value={values.location || ''}
                 onChange={handleInputChange}
                 required
+                maxLength={20}
               />
             </FormField>
             <FormField title="Cena (PLN)" id="cost">
@@ -174,6 +178,7 @@ const OfferForm = ({
                 value={values.cost || ''}
                 onChange={handleInputChange}
                 required
+                max={9999999}
               />
             </FormField>
           </Section>

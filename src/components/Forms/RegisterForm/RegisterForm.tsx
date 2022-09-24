@@ -1,62 +1,43 @@
 import React from 'react';
 import useRegisterForm from 'hooks/useRegisterForm';
-import {
-  Form,
-  FormField,
-  ElementContainer,
-  LoadingSpinner,
-  Input,
-  ButtonContainer,
-  Button,
-} from '../FormsElements';
+import { Form, FormField, Input, ButtonContainer, Button } from '../FormsElements';
 
 const RegisterForm = () => {
-  const { isLoading, message, form, submitFn } = useRegisterForm();
+  const { formValues, handleInputChange, handleFormSubmit } = useRegisterForm();
 
   return (
-    <Form onSubmit={submitFn}>
-      {isLoading ? (
-        <ElementContainer>
-          <LoadingSpinner />
-        </ElementContainer>
-      ) : message.isActive ? (
-        <ElementContainer>
-          <message.element />
-        </ElementContainer>
-      ) : (
-        <>
-          <FormField title="Nazwa użytkownika:" id="username">
-            <Input
-              id="username"
-              type="text"
-              name="username"
-              value={form.values.username}
-              onChange={form.handleInputChange}
-            />
-          </FormField>
-          <FormField title="Hasło:" id="password">
-            <Input
-              id="password"
-              type="password"
-              name="password"
-              value={form.values.password}
-              onChange={form.handleInputChange}
-            />
-          </FormField>
-          <FormField title="Powtórz hasło:" id="password-repeat">
-            <Input
-              id="password_repeat"
-              type="password"
-              name="password_repeat"
-              value={form.values.password_repeat}
-              onChange={form.handleInputChange}
-            />
-          </FormField>
-          <ButtonContainer>
-            <Button>Utwórz konto</Button>
-          </ButtonContainer>
-        </>
-      )}
+    <Form onSubmit={handleFormSubmit}>
+      <FormField title="Nazwa użytkownika:" id="username">
+        <Input
+          id="username"
+          type="text"
+          name="username"
+          value={formValues.username}
+          onChange={handleInputChange}
+          maxLength={30}
+        />
+      </FormField>
+      <FormField title="Hasło:" id="password">
+        <Input
+          id="password"
+          type="password"
+          name="password"
+          value={formValues.password}
+          onChange={handleInputChange}
+        />
+      </FormField>
+      <FormField title="Powtórz hasło:" id="password-repeat">
+        <Input
+          id="password_repeat"
+          type="password"
+          name="password_repeat"
+          value={formValues.password_repeat}
+          onChange={handleInputChange}
+        />
+      </FormField>
+      <ButtonContainer>
+        <Button>Utwórz konto</Button>
+      </ButtonContainer>
     </Form>
   );
 };

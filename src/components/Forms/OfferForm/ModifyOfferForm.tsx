@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import useOfferForm from 'hooks/useOfferForm';
-import AddModifyOfferForm, { IFormValues } from './OfferForm';
-import { LoadingSpinner } from '../FormsElements';
 import { useParams } from 'react-router';
 import useAPI from 'hooks/useApi';
+import useOfferForm from 'hooks/useOfferForm';
+import AddModifyOfferForm, { IFormValues } from './OfferForm';
 
 const ModifyOfferForm = () => {
   const location = useParams();
@@ -37,8 +36,6 @@ const ModifyOfferForm = () => {
     modelSelectRef,
     isModelsSelectDisabled,
     formValues,
-    message,
-    isLoading,
     handleMakeSelectChange,
     handleSelectChange,
     handleInputChange,
@@ -47,30 +44,18 @@ const ModifyOfferForm = () => {
   } = useOfferForm({ initialFormValues, type: 'modify' });
 
   return (
-    <>
-      {isLoading ? (
-        <message.container>
-          <LoadingSpinner />
-        </message.container>
-      ) : message.isActive ? (
-        <message.container>
-          <message.element />
-        </message.container>
-      ) : (
-        <AddModifyOfferForm
-          title="Modyfikuj"
-          selectsOptions={selectsOptions}
-          modelSelectRef={modelSelectRef}
-          isModelsSelectDisabled={isModelsSelectDisabled}
-          values={formValues}
-          handleMakeSelectChange={handleMakeSelectChange}
-          handleSelectChange={handleSelectChange}
-          handleInputChange={handleInputChange}
-          handleFileInputChange={handleFileInputChange}
-          handleSubmit={handleSubmit}
-        />
-      )}
-    </>
+    <AddModifyOfferForm
+      title="Modyfikuj"
+      selectsOptions={selectsOptions}
+      modelSelectRef={modelSelectRef}
+      isModelsSelectDisabled={isModelsSelectDisabled}
+      values={formValues}
+      handleMakeSelectChange={handleMakeSelectChange}
+      handleSelectChange={handleSelectChange}
+      handleInputChange={handleInputChange}
+      handleFileInputChange={handleFileInputChange}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 
