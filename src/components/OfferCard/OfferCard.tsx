@@ -1,26 +1,32 @@
-import useFontAwesome from 'hooks/useFontAwesome';
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router';
 import { routes } from 'router/routes';
-import { ThemeContext } from 'contexts/contexts';
-import { Optional, ICarOffer, IThemeContext } from 'types/types';
+import useFontAwesome from 'hooks/useFontAwesome';
+import { useAppDispatch } from 'hooks/useRedux';
+import { deleteOfferAsync } from 'store/slices/offersSlice';
+import { ThemeContext, UserContext } from 'contexts/contexts';
+import { Optional, ICarOffer, IThemeContext, IUserContext } from 'types/types';
 import { not_found_IMG, not_found_dark_IMG } from 'images/images';
 import {
   WrapperDefault,
   WrapperExtended,
-  Link,
+  ButtonsContainer,
+  IconButton,
   Photo,
+  Content,
   Title,
   Data,
   Price,
-  Content,
 } from './OfferCardElements';
 
 interface Props extends Optional<ICarOffer, 'location' | 'image'> {
   extended?: boolean;
+  deleteOfferFn?: () => void;
 }
 
 const OfferCard = ({
   _id,
+  userID,
   make,
   model,
   yearOfProduction,
@@ -32,13 +38,41 @@ const OfferCard = ({
   image,
   extended,
 }: Props) => {
+  const user = useContext(UserContext) as IUserContext;
   const { activeTheme } = useContext(ThemeContext) as IThemeContext;
   const { Icon } = useFontAwesome();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const offerImage = image || (activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG);
+
+  const handleModifyButtonClick = (e: Event) => {
+    e.stopPropagation();
+    navigate(`${routes.modifyOffer}/${_id}`);
+  };
+
+  const navigateToDetails = () => navigate(`${routes.offer}/${_id}`);
+
+  const handleDeleteButtonClick = (e: Event) => {
+    e.stopPropagation();
+
+    const confirmation = window.confirm(`Czy na pewno chcesz usunąć ogłoszenie ${make} ${model}?`);
+
+    if (confirmation) {
+      dispatch(deleteOfferAsync(_id));
+      window.location.reload();
+    }
+  };
+
   return (
-    <Link to={`${routes.offer}/${_id}`}>
+    <>
       {extended ? (
-        <WrapperExtended>
+        <WrapperExtended onClick={navigateToDetails}>
+          {user.id === userID && (
+            <ButtonsContainer>
+              <IconButton icon={['fas', 'pen-to-square']} onClick={handleModifyButtonClick} />
+              <IconButton icon={['fas', 'trash-can']} onClick={handleDeleteButtonClick} />
+            </ButtonsContainer>
+          )}
           <Photo extended img={offerImage || ''} />
           <Content extended>
             <Title extended>
@@ -56,7 +90,7 @@ const OfferCard = ({
           <Price extended>{cost.toLocaleString()} PLN</Price>
         </WrapperExtended>
       ) : (
-        <WrapperDefault>
+        <WrapperDefault onClick={navigateToDetails}>
           <Photo img={offerImage || ''} />
           <Content>
             <Title>
@@ -70,7 +104,7 @@ const OfferCard = ({
           </Content>
         </WrapperDefault>
       )}
-    </Link>
+    </>
   );
 };
 

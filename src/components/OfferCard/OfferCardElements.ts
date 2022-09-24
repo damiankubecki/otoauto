@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import IconButton from 'components/Button/IconButton';
 
 const WrapperDefault = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ const WrapperDefault = styled.div`
 `;
 
 const WrapperExtended = styled.div`
+  position: relative;
   display: flex;
   height: 150px;
   width: 1000px;
@@ -62,8 +63,25 @@ const Price = styled.p<{ extended?: boolean }>`
   font-weight: bold;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const ButtonsContainer = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: 95px;
+  padding: 0 0 5px;
+  justify-content: space-evenly;
+  z-index: 99;
 `;
 
-export { WrapperDefault, WrapperExtended, Photo, Content, StyledLink as Link, Title, Data, Price };
+export {
+  WrapperDefault,
+  WrapperExtended,
+  ButtonsContainer,
+  IconButton,
+  Photo,
+  Content,
+  Title,
+  Data,
+  Price,
+};
