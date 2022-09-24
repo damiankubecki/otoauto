@@ -1,17 +1,12 @@
 import styled from 'styled-components';
+import Header from './Header/Header';
+import Main from './Main/Main';
+import Footer from './Footer/Footer';
 
 const Wrapper = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
-const Title = styled.h1`
-  margin: 30px 0 10px;
-  color: ${({ theme }) => theme.tsColor};
-  font-size: ${({ theme }) => theme.fontSize.xl};
-`;
-
-const Description = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.m};
-`;
-
-export { Wrapper, Title, Description };
+export { Wrapper, Header, Main, Footer };

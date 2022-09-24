@@ -1,14 +1,20 @@
 import React from 'react';
+import useApp from 'hooks/useApp';
 import AppTemplate from 'templates/AppTemplate';
-import { Wrapper, Title, Description } from './AppElements';
+import { Wrapper, Header, Main, Footer } from './AppElements';
 
-const App = () => (
-  <AppTemplate>
-    <Wrapper>
-      <Title>Create React App TS</Title>
-      <Description>The site is ready to work with TypeScript!</Description>
-    </Wrapper>
-  </AppTemplate>
-);
+const App = () => {
+  const { currentTheme, currentUser } = useApp();
+
+  return (
+    <AppTemplate theme={currentTheme} userInfo={currentUser}>
+      <Wrapper>
+        <Header />
+        <Main />
+        <Footer />
+      </Wrapper>
+    </AppTemplate>
+  );
+};
 
 export default App;
