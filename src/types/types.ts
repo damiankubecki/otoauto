@@ -109,6 +109,8 @@ export type Color =
   | 'bordowy'
   | 'brązowy'
   | 'żółty'
+  | 'pomarańczowy'
+  | 'fioletowy'
   | 'inny';
 
 export type HP = number;
