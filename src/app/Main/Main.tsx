@@ -2,11 +2,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useMain from 'hooks/useMain';
 import { CarsContext, MessageContext, OffersContext, LoadingContext } from 'contexts/contexts';
-import { Wrapper, ElementContainer, LoadingSpinner } from './MainElements';
+import { Wrapper, ElementContainer, LoadingSpinner, Message } from './MainElements';
 import { views } from 'views/views';
 
 const Main = () => {
-  const { isLoading, setLoading, isMessageActive, MessageElement, showMessage, cars, offers } =
+  const { isLoading, setLoading, isMessageActive, messageContent, showMessage, cars, offers } =
     useMain();
 
   return (
@@ -17,7 +17,7 @@ const Main = () => {
         </ElementContainer>
       ) : isMessageActive ? (
         <ElementContainer>
-          <MessageElement />
+          <Message {...messageContent} />
         </ElementContainer>
       ) : (
         <CarsContext.Provider value={cars}>

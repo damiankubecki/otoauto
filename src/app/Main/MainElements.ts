@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
+import Message from 'components/Message/Message';
 import { media } from 'theme/media';
 
 const Wrapper = styled.main`
@@ -22,4 +23,4 @@ const ElementContainer = styled.div`
   }
 `;
 
-export { Wrapper, ElementContainer, LoadingSpinner };
+export { Wrapper, ElementContainer, LoadingSpinner, Message };

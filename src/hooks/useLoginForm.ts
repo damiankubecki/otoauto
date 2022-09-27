@@ -46,7 +46,13 @@ const useLoginForm = () => {
         buttonFn: () => navigate(`${routes.home}`),
       });
     } catch (err) {
-      showMessage({ textContent: `${err}`, buttonContent: 'Spróbuj ponownie' });
+      showMessage({
+        textContent: `${err}`,
+        buttonContent: 'Spróbuj ponownie',
+        buttonFn: () => {
+          navigate(`${routes.login}`);
+        },
+      });
     }
     setLoading(false);
     clearForm();

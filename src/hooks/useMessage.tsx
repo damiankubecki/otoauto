@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IMessage } from 'types/types';
-import Message from 'components/Message/Message';
 
 const useMessage = () => {
   const [isMessageActive, setMessageActivity] = useState(false);
-  const [message, setMessage] = useState<IMessage>({
+  const [messageContent, setMessage] = useState<IMessage>({
     textContent: '',
     buttonContent: '',
     buttonFn: () => null,
@@ -20,18 +19,7 @@ const useMessage = () => {
     setMessageActivity(false);
   };
 
-  const MessageElement = (): JSX.Element => (
-    <Message
-      textContent={message.textContent}
-      buttonContent={message.buttonContent}
-      buttonFn={() => {
-        if (message.buttonFn) message.buttonFn();
-        hideMessage();
-      }}
-    />
-  );
-
-  return { MessageElement, isMessageActive, showMessage, hideMessage };
+  return { isMessageActive, messageContent, showMessage, hideMessage };
 };
 
 export default useMessage;

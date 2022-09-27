@@ -10,7 +10,7 @@ const useMain = () => {
   const [isLoading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const { MessageElement, isMessageActive, showMessage, hideMessage } = useMessage();
+  const { isMessageActive, messageContent, showMessage, hideMessage } = useMessage();
   const cars = useAppSelector(state => ({ cars: state.cars })) as ICarsContext;
   const offers = useAppSelector(state => ({ offers: state.offers })) as IOffersContext;
 
@@ -36,7 +36,7 @@ const useMain = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
-  return { isLoading, setLoading, isMessageActive, MessageElement, showMessage, cars, offers };
+  return { isLoading, setLoading, isMessageActive, messageContent, showMessage, cars, offers };
 };
 
 export default useMain;
