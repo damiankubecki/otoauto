@@ -3,11 +3,17 @@ import OfferCard from 'components/OfferCard/OfferCard';
 import Button from 'components/Button/Button';
 import SearchConditions from 'components/OffersViewComponents/SearchConditions/SearchConditions';
 import BackButton from 'components/Button/BackButton';
+import { media } from 'theme/media';
 
 const Wrapper = styled.div`
-  width: 1200px;
+  width: 1100px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: ${media.tablet_L}) {
+    flex-direction: column;
+    width: auto;
+  }
 `;
 
 const SearchConditionsContainer = styled.section`
@@ -19,24 +25,30 @@ const SearchConditionsContainer = styled.section`
 `;
 
 const OffersContainer = styled.section`
-  flex-basis: 1000px;
+  flex-basis: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${media.tablet_S}) {
+    width: 100%;
+  }
 `;
 
 const PaginationContainer = styled.div`
   margin: 25px 0;
 `;
 
-const ButtonContainer = styled.div`
-  margin: 0 0 70px;
-`;
+const ButtonContainer = styled.div``;
 
 const BackButtonContainer = styled.div`
   width: 100%;
   display: flex;
+
+  @media (max-width: ${media.tablet_S}) {
+    width: 98%;
+  }
 `;
 
 export {

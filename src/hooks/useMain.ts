@@ -33,6 +33,7 @@ const useMain = () => {
 
   useEffect(() => {
     hideMessage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
   return { isLoading, setLoading, isMessageActive, MessageElement, showMessage, cars, offers };

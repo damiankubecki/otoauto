@@ -4,11 +4,19 @@ import DetailsSection from 'components/OfferDetailsViewComponents/DetailsSection
 import DescriptionSection from 'components/OfferDetailsViewComponents/DescriptionSection/DescriptionSection';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 import BackButton from 'components/Button/BackButton';
+import { media } from 'theme/media';
 
 const OfferContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 975px;
+
+  @media (max-width: ${media.tablet_L}) {
+    width: 875px;
+  }
+  @media (max-width: ${media.tablet_S}) {
+    width: 97%;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -19,6 +27,10 @@ const ButtonContainer = styled.div`
 const DataContainer = styled.div`
   display: flex;
   padding: 10px;
+
+  @media (max-width: ${media.tablet_S}) {
+    flex-direction: column;
+  }
 `;
 
 export {

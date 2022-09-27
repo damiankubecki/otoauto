@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { media } from 'theme/media';
 
 const Wrapper = styled.article`
   min-width: 200px;
   margin: 0 20px;
   padding: 0 0 40px;
+
+  @media (max-width: ${media.tablet_S}) {
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+  }
 `;
 
 const Title = styled.h4`
@@ -13,6 +19,11 @@ const Title = styled.h4`
   font-weight: ${({ theme }) => theme.boldFont};
   text-transform: uppercase;
   text-align: center;
+
+  @media (max-width: ${media.tablet_S}) {
+    padding: 0;
+    font-size: ${({ theme }) => theme.fontSize.m};
+  }
 `;
 
 const ItemsContainer = styled.div`
@@ -30,6 +41,11 @@ const Link = styled.a`
 
   &:hover {
     color: ${({ theme }) => theme.fontColorAdditional200};
+  }
+
+  @media (max-width: ${media.tablet_S}) {
+    padding: 0;
+    font-size: ${({ theme }) => theme.fontSize.xxs};
   }
 `;
 

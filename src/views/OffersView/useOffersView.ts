@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { routes } from 'router/routes';
 import usePagination from 'hooks/usePagination';
+import useMediaQueries from 'hooks/useMediaQueries';
 import { MessageContext } from 'contexts/contexts';
 import { ICarOffer, IMessageContext, ISearchConditions } from 'types/types';
 
@@ -16,9 +17,10 @@ const useOffersView = () => {
   const { showMessage } = useContext(MessageContext) as IMessageContext;
   const navigate = useNavigate();
   const { state } = useLocation() as LocationState;
+  const { isTabletS } = useMediaQueries();
   const { currentData, Pagination } = usePagination({
     data: state?.offers,
-    itemsPerPage: 8,
+    itemsPerPage: isTabletS ? 12 : 8,
   });
 
   useEffect(() => {

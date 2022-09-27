@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { media } from 'theme/media';
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.fontColor};
+
+  @media (max-width: ${media.tablet_M}) {
+    flex-basis: 100%;
+    justify-content: center;
+  }
 `;
 
 const IconContainer = styled.div`

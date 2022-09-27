@@ -18,6 +18,7 @@ import {
   Data,
   Price,
 } from './OfferCardElements';
+import useMediaQueries from 'hooks/useMediaQueries';
 
 interface Props extends Optional<ICarOffer, 'location' | 'image'> {
   extended?: boolean;
@@ -44,6 +45,8 @@ const OfferCard = ({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const offerImage = image || (activeTheme.name === 'dark' ? not_found_dark_IMG : not_found_IMG);
+  const { isTabletM, isTabletS } = useMediaQueries();
+  const isOfferYours = user.id === userID;
 
   const handleModifyButtonClick = (e: Event) => {
     e.stopPropagation();
@@ -67,7 +70,7 @@ const OfferCard = ({
     <>
       {extended ? (
         <WrapperExtended onClick={navigateToDetails}>
-          {user.id === userID && (
+          {isOfferYours && (
             <ButtonsContainer>
               <IconButton icon={['fas', 'pen-to-square']} onClick={handleModifyButtonClick} />
               <IconButton icon={['fas', 'trash-can']} onClick={handleDeleteButtonClick} />
@@ -78,28 +81,57 @@ const OfferCard = ({
             <Title extended>
               {make} {model}
             </Title>
-            <Data extended>
-              {yearOfProduction} | {mileage.toLocaleString()} km | {fuelType} | {engine} cm3
-            </Data>
-            <Data extended>
-              <Icon color={activeTheme.fontColor} size="1x" icon={['fas', 'location-dot']} />
-              {'  '}
-              {location || 'Polska'}
-            </Data>
+            {isTabletM ? (
+              <>
+                <Data extended>
+                  {yearOfProduction} | {mileage.toLocaleString()} km | {fuelType}
+                </Data>
+                {!isOfferYours && (
+                  <Data extended>
+                    <Icon color={activeTheme.fontColor} size="1x" icon={['fas', 'location-dot']} />
+                    {'  '}
+                    {location || 'Polska'}
+                  </Data>
+                )}
+                <Price extended>{cost.toLocaleString()} PLN</Price>
+              </>
+            ) : (
+              <>
+                <Data extended>
+                  {yearOfProduction} | {mileage.toLocaleString()} km | {fuelType} | {engine} cm3
+                </Data>
+                <Data extended>
+                  <Icon color={activeTheme.fontColor} size="1x" icon={['fas', 'location-dot']} />
+                  {'  '}
+                  {location || 'Polska'}
+                </Data>
+              </>
+            )}
           </Content>
-          <Price extended>{cost.toLocaleString()} PLN</Price>
+          {!isTabletM && <Price extended>{cost.toLocaleString()} PLN</Price>}
         </WrapperExtended>
       ) : (
         <WrapperDefault onClick={navigateToDetails}>
           <Photo img={offerImage || ''} />
           <Content>
             <Title>
-              {make} {model} {yearOfProduction}
+              {make} {model} {!isTabletS && yearOfProduction}
             </Title>
-            <Data></Data>
-            <Data>
-              {mileage.toLocaleString()} km | {fuelType} | {engine} cm3
-            </Data>
+            {isTabletS ? (
+              <>
+                <Data>
+                  {yearOfProduction} | {mileage.toLocaleString()} km
+                </Data>
+                <Data>
+                  {fuelType} | {engine} cm3
+                </Data>
+              </>
+            ) : (
+              <Data>
+                {mileage.toLocaleString()} km | {fuelType} | {engine} cm3
+              </Data>
+            )}
+
             <Price>{cost.toLocaleString()} PLN</Price>
           </Content>
         </WrapperDefault>

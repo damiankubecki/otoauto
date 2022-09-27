@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from 'theme/media';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,6 +11,10 @@ const Title = styled.p`
   color: ${({ theme }) => theme.fontColor};
   font-size: ${({ theme }) => theme.fontSize.xs};
   text-align: right;
+
+  @media (max-width: ${media.tablet_S}) {
+    text-align: left;
+  }
 `;
 
 const Data = styled(Title)`
@@ -17,6 +22,10 @@ const Data = styled(Title)`
   font-size: ${({ theme }) => theme.fontSize.s};
   width: auto;
   text-align: right;
+
+  @media (max-width: ${media.tablet_S}) {
+    text-align: left;
+  }
 `;
 
 export { Wrapper, Title, Data };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Select from 'components/Select/Select';
 import Button from 'components/Button/Button';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
+import { media } from 'theme/media';
 
 const Form = styled.form`
   display: flex;
@@ -12,6 +13,11 @@ const Form = styled.form`
   margin: 0 auto;
   padding: 20px 25px;
   background-color: ${({ theme }) => theme.primary};
+
+  @media (max-width: ${media.tablet_S}) {
+    padding: 15px 15px;
+    margin: 0;
+  }
 `;
 
 const Title = styled.h4`
@@ -28,6 +34,10 @@ const Label = styled.label`
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.boldFont};
   text-align: left;
+
+  @media (max-width: ${media.tablet_S}) {
+    text-align: center;
+  }
 `;
 
 const Input = styled.input`
@@ -74,6 +84,14 @@ const Input = styled.input`
     &:focus {
       border-bottom: none;
     }
+
+    @media (max-width: ${media.tablet_S}) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: ${media.tablet_S}) {
+    width: 200px;
   }
 `;
 
@@ -87,6 +105,10 @@ const Textarea = styled.textarea`
   font-size: ${({ theme }) => theme.fontSize.m};
   color: ${({ theme }) => theme.fontColor};
   outline: none;
+
+  @media (max-width: ${media.tablet_S}) {
+    min-height: 450px;
+  }
 `;
 
 const ElementContainer = styled.div`
@@ -111,6 +133,10 @@ const FormFieldWrapper = styled.div`
 const FormFieldChildrenContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${media.tablet_S}) {
+    justify-content: center;
+  }
 `;
 
 const FormField = ({ id, title, children }: IFormFieldProps) => (

@@ -4,8 +4,9 @@ import LoginForm from 'components/Forms/LoginForm/LoginForm';
 import RegisterForm from 'components/Forms/RegisterForm/RegisterForm';
 
 const Title = styled.h2`
+  margin-top: 10px;
   color: ${({ theme }) => theme.fontColor};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: ${({ theme }) => theme.boldFont};
 `;
 
@@ -17,7 +18,7 @@ const ButtonsContainer = styled.div`
 
 const Button = styled(NavLink)`
   flex-basis: 50%;
-  padding: 15px 0;
+  padding: 10px 0 15px;
   border-bottom: 2px solid transparent;
   color: ${({ theme }) => theme.fontColorAdditional200};
   font-size: ${({ theme }) => theme.fontSize.s};

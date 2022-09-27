@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { media } from 'theme/media';
 
 const Button = styled.button`
   min-width: 150px;
@@ -32,6 +33,10 @@ const Button = styled.button`
       opacity: 0.8;
     }
   }
+
+  @media (max-width: ${media.tablet_M}) {
+    padding: 6px 10px;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -39,6 +44,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const StyledBackButton = styled.button`
+  padding-right: 20px;
   border: none;
   background-color: transparent;
   color: ${({ theme }) => theme.fontColorAdditional200};
@@ -61,6 +67,15 @@ const StyledIconButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.additional};
+  }
+
+  @media (max-width: ${media.tablet_S}) {
+    height: 34px;
+    width: 34px;
+  }
+  @media (max-width: ${media.phone_M}) {
+    height: 30px;
+    width: 30px;
   }
 `;
 

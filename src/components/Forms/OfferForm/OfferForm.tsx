@@ -58,8 +58,8 @@ const OfferForm = ({
 
   return (
     <>
-      <Title>{title}</Title>
       <Form onSubmit={handleSubmit}>
+        <Title>{title}</Title>
         <SectionsContainer>
           <Section>
             <FormField title="Typ nadwozia" id="bodystyle">
@@ -196,9 +196,7 @@ const OfferForm = ({
           />
         </FormField>
         <ButtonContainer>
-          <Button red bigger>
-            Potwierdź
-          </Button>
+          <Button red>Potwierdź</Button>
         </ButtonContainer>
       </Form>
     </>

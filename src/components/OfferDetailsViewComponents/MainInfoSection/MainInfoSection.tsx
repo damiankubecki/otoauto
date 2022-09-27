@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
+import { routes } from 'router/routes';
 import { ThemeContext } from 'contexts/contexts';
 import { ICarOffer, IThemeContext } from 'types/types';
 import { not_found_IMG, not_found_dark_IMG } from 'images/images';
 import { Wrapper, Photo, MainInfo, Header, Subtitle, Price, Link } from './MainInfoSectionElements';
-import { routes } from 'router/routes';
 
 interface Props {
   offer: ICarOffer | undefined;

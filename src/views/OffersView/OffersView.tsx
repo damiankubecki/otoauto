@@ -34,7 +34,7 @@ const OffersView = () => {
             <Pagination />
           </PaginationContainer>
           <ButtonContainer>
-            <Button onClick={() => history.back()} bigger red>
+            <Button onClick={() => history.back()} red>
               Powrót
             </Button>
           </ButtonContainer>

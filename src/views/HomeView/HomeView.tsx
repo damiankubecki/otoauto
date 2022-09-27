@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import useMediaQueries from 'hooks/useMediaQueries';
 import { OffersContext } from 'contexts/contexts';
 import { IOffersContext } from 'types/types';
 import {
@@ -8,18 +9,20 @@ import {
   OffersSection,
   OffersTitle,
   SearchForm,
+  SearchFormMobile,
   OfferContainer,
   OfferCard,
 } from './HomeViewElements';
 
 const HomeView = () => {
   const { offers } = useContext(OffersContext) as IOffersContext;
+  const { isTabletS } = useMediaQueries();
 
   return (
     <Wrapper>
       <FormSection>
         <BackgroudOverlay />
-        <SearchForm />
+        {isTabletS ? <SearchFormMobile /> : <SearchForm />}
       </FormSection>
       <OffersTitle>Najnowsze ogłoszenia</OffersTitle>
       <OffersSection>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { home_background_IMG } from 'images/images';
 import SearchForm from 'components/Forms/SearchForm/SearchForm';
 import OfferCard from 'components/OfferCard/OfferCard';
+import SearchFormMobile from 'components/Forms/SearchForm/SearchForm-mobile';
+import { media } from 'theme/media';
 
 const Wrapper = styled.div`
   position: relative;
@@ -41,15 +43,31 @@ const OffersTitle = styled.h3`
   text-transform: uppercase;
   text-align: center;
   font-weight: ${({ theme }) => theme.boldFont};
+
+  @media (max-width: ${media.tablet_S}) {
+    margin: 20px 0;
+    font-size: ${({ theme }) => theme.fontSize.l};
+  }
 `;
 
 const OffersSection = styled.section`
-  border-top: 4px solid ${({ theme }) => theme.secondary};
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 1200px;
   margin: 0 auto 80px;
+  border-top: 4px solid ${({ theme }) => theme.secondary};
+
+  @media (max-width: ${media.tablet_L}) {
+    width: 925px;
+  }
+  @media (max-width: ${media.tablet_M}) {
+    width: 580px;
+  }
+  @media (max-width: ${media.tablet_S}) {
+    width: 95%;
+    margin: 0 auto 20px;
+  }
 `;
 
 const OfferContainer = styled.div`
@@ -66,6 +84,7 @@ export {
   OffersSection,
   OffersTitle,
   SearchForm,
+  SearchFormMobile,
   OfferContainer,
   OfferCard,
 };
