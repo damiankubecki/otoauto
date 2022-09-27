@@ -8,6 +8,7 @@ import OffersView from './OffersView/OffersView';
 import OfferDetailsView from './OfferDetailsView/OfferDetailsView';
 import ProfileView from './ProfileView/ProfileView';
 import AddModifyOfferView from './AddModifyOfferView/AddModifyOfferView';
+import NotFoundView from './NotFoundView/NotFoundView';
 
 export const views: IView[] = [
   { name: 'home', path: routes.home, element: <HomeView /> },
@@ -23,4 +24,5 @@ export const views: IView[] = [
     path: `${routes.modifyOffer}/:id`,
     element: <AddModifyOfferView type="modify" />,
   },
+  { name: 'any', path: '*', element: <NotFoundView /> },
 ];
