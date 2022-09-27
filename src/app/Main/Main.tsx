@@ -8,6 +8,7 @@ import { views } from 'views/views';
 const Main = () => {
   const { isLoading, setLoading, isMessageActive, messageContent, showMessage, cars, offers } =
     useMain();
+  console.log(isMessageActive, messageContent);
 
   return (
     <Wrapper>
