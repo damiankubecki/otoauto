@@ -37,6 +37,7 @@ const Label = styled.label`
 
   @media (max-width: ${media.tablet_S}) {
     text-align: center;
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;
 

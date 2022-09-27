@@ -19,7 +19,7 @@ const Photo = styled.div<{ img: string }>`
   flex-basis: 70%;
   height: 415px;
   border-radius: 5px;
-  border: 3px solid ${({ theme }) => theme.secondary};
+  border: 2px solid ${({ theme }) => theme.secondary};
   background-image: ${({ img }) => `url(${img})`};
   background-size: cover;
   background-position: center;
@@ -46,12 +46,12 @@ const MainInfo = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    padding: 10px 0 0;
+    padding: 10px 5px 0;
   }
 `;
 
 const Header = styled.h3`
-  margin: 0;
+  margin: 5px 0;
   color: ${({ theme }) => theme.fontColor};
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.boldFont};
