@@ -18,7 +18,6 @@ const useLogoutView = () => {
     try {
       await dispatch(logoutUserAsync());
       saveToLocalStorage(USER_LOCALSTORAGE, {});
-      navigate(`${routes.home}`);
     } catch (err) {
       showMessage({
         textContent: `${err}`,
@@ -31,7 +30,10 @@ const useLogoutView = () => {
   const defaultMessage = {
     textContent: 'Czy na pewno chcesz się wylogować?',
     buttonContent: 'Wyloguj',
-    buttonFn: logout,
+    buttonFn: () => {
+      logout();
+      navigate(`${routes.home}`);
+    },
   };
 
   useEffect(() => {

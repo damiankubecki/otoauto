@@ -2,17 +2,33 @@ import { useState, useEffect } from 'react';
 import { fetchCarsDataAsync } from 'store/slices/carsSlice';
 import { fetchOffersCollectionAsync } from 'store/slices/offersSlice';
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
-import useMessage from 'hooks/useMessage';
-import { ICarsContext, IOffersContext } from 'types/types';
+import { ICarsContext, IOffersContext, IMessage } from 'types/types';
 import { useLocation } from 'react-router';
 
 const useMain = () => {
   const [isLoading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const { isMessageActive, messageContent, showMessage, hideMessage } = useMessage();
   const cars = useAppSelector(state => ({ cars: state.cars })) as ICarsContext;
   const offers = useAppSelector(state => ({ offers: state.offers })) as IOffersContext;
+  const [isMessageActive, setMessageActivity] = useState(false);
+  const [messageContent, setMessage] = useState<IMessage>({
+    textContent: '',
+    buttonContent: '',
+    buttonFn: () => null,
+  });
+
+  const showMessage = ({ textContent, buttonContent, buttonFn }: IMessage) => {
+    setMessage({
+      textContent,
+      buttonContent,
+      buttonFn: () => {
+        if (buttonFn) buttonFn();
+        setMessageActivity(false);
+      },
+    });
+    setMessageActivity(true);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +48,6 @@ const useMain = () => {
   }, []);
 
   useEffect(() => {
-    hideMessage();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
